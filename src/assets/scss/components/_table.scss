@@ -1,0 +1,214 @@
+.gka-table{
+  border:$grey-lighter solid 1px;
+  border-top:transparent solid 3px !important;
+  border-image: $secondary-grad;
+  position: relative;
+  @include breakpoint(mobile) {
+    display: flex;
+  }
+  &:before{
+    content:'';
+    width:100%;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $secondary-grad;
+  }
+  thead{
+    background: $grey-lightest;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(mobile) {
+      flex-direction: row;
+    }
+    th{
+      font-size: $table-head;
+      flex: 1 1 1px;
+      @include breakpoint(mobile) {
+        border-bottom: 1px !important;
+        height: 50px;
+      }
+      @include breakpoint(desktopabove) {
+        &:first-child:nth-last-child(1) {
+          /* -or- li:only-child { */
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        &:first-child:nth-last-child(2),
+        &:first-child:nth-last-child(2) ~ th {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        &:first-child:nth-last-child(3),
+        &:first-child:nth-last-child(3) ~ th {
+          flex: 0 0 33.33%;
+          max-width: 33.33%;
+        }
+        &:first-child:nth-last-child(4),
+        &:first-child:nth-last-child(4) ~ th {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        &:first-child:nth-last-child(5),
+        &:first-child:nth-last-child(5) ~ th {
+          flex: 0 0 20%;
+          max-width: 20%;
+        }
+        &:first-child:nth-last-child(6),
+        &:first-child:nth-last-child(6) ~ th {
+          flex: 0 0 16.66%;
+          max-width: 16.66%;
+        }
+        &:first-child:nth-last-child(7),
+        &:first-child:nth-last-child(7) ~ th {
+          flex: 0 0 14.28%;
+          max-width: 14.28%;
+        }
+        &:first-child:nth-last-child(8),
+        &:first-child:nth-last-child(8) ~ th {
+          flex: 0 0 12.50%;
+          max-width: 12.50%;
+        }
+        &:first-child:nth-last-child(9),
+        &:first-child:nth-last-child(9) ~ th {
+          flex: 0 0 11.11%;
+          max-width: 11.11%;
+        }
+        &:first-child:nth-last-child(10),
+        &:first-child:nth-last-child(10) ~ th {
+          flex: 0 0 10%;
+          max-width: 10%;
+        }
+        &:first-child:nth-last-child(11),
+        &:first-child:nth-last-child(11) ~ th {
+          flex: 0 0 9.09%;
+          max-width: 9.09%;
+        }
+        &:first-child:nth-last-child(12),
+        &:first-child:nth-last-child(12) ~ th {
+          flex: 0 0 8.33%;
+          max-width: 8.33%;
+        }
+        &:first-child:nth-last-child(13),
+        &:first-child:nth-last-child(13) ~ th {
+          flex: 0 0 7.69%;
+          max-width: 7.69%;
+        }
+        &:first-child:nth-last-child(14),
+        &:first-child:nth-last-child(14) ~ th {
+          flex: 0 0 7.14%;
+          max-width: 7.14%;
+        }
+        &:first-child:nth-last-child(15),
+        &:first-child:nth-last-child(15) ~ th {
+          flex: 0 0 6.66%;
+          max-width: 6.66%;
+        }
+      }
+    }
+  }
+  tbody{
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(mobile) {
+      flex-direction: row;
+      overflow-x: auto;
+    }
+    td{
+      font-size: $table-cell;
+      flex: 1 1 1px;
+      @include breakpoint(mobile) {
+        border-bottom: 1px !important;
+        height: 50px;
+      }
+      @include breakpoint(desktopabove) {
+        &:first-child:nth-last-child(1) {
+          /* -or- li:only-child { */
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        &:first-child:nth-last-child(2),
+        &:first-child:nth-last-child(2) ~ td {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        &:first-child:nth-last-child(3),
+        &:first-child:nth-last-child(3) ~ td {
+          flex: 0 0 33.33%;
+          max-width: 33.33%;
+        }
+        &:first-child:nth-last-child(4),
+        &:first-child:nth-last-child(4) ~ td {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        &:first-child:nth-last-child(5),
+        &:first-child:nth-last-child(5) ~ td {
+          flex: 0 0 20%;
+          max-width: 20%;
+        }
+        &:first-child:nth-last-child(6),
+        &:first-child:nth-last-child(6) ~ td {
+          flex: 0 0 16.66%;
+          max-width: 16.66%;
+        }
+        &:first-child:nth-last-child(7),
+        &:first-child:nth-last-child(7) ~ td {
+          flex: 0 0 14.28%;
+          max-width: 14.28%;
+        }
+        &:first-child:nth-last-child(8),
+        &:first-child:nth-last-child(8) ~ td {
+          flex: 0 0 12.50%;
+          max-width: 12.50%;
+        }
+        &:first-child:nth-last-child(9),
+        &:first-child:nth-last-child(9) ~ td {
+          flex: 0 0 11.11%;
+          max-width: 11.11%;
+        }
+        &:first-child:nth-last-child(10),
+        &:first-child:nth-last-child(10) ~ td {
+          flex: 0 0 10%;
+          max-width: 10%;
+        }
+        &:first-child:nth-last-child(11),
+        &:first-child:nth-last-child(11) ~ td {
+          flex: 0 0 9.09%;
+          max-width: 9.09%;
+        }
+        &:first-child:nth-last-child(12),
+        &:first-child:nth-last-child(12) ~ td {
+          flex: 0 0 8.33%;
+          max-width: 8.33%;
+        }
+        &:first-child:nth-last-child(13),
+        &:first-child:nth-last-child(13) ~ td {
+          flex: 0 0 7.69%;
+          max-width: 7.69%;
+        }
+        &:first-child:nth-last-child(14),
+        &:first-child:nth-last-child(14) ~ td {
+          flex: 0 0 7.14%;
+          max-width: 7.14%;
+        }
+        &:first-child:nth-last-child(15),
+        &:first-child:nth-last-child(15) ~ td {
+          flex: 0 0 6.66%;
+          max-width: 6.66%;
+        }
+      }
+    }
+  }
+  tr{
+    display: flex;
+    @include breakpoint(mobile) {
+      flex-direction: column;
+    }
+  }
+  &.has-scroll{
+
+  }
+}

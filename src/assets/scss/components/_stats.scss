@@ -1,0 +1,72 @@
+.gka-stats{
+  .card{
+    border: 0;
+    padding: 10px 20px;
+    border-radius:0;
+    border-left: $grey-lighter solid 1px;
+    border-right: $white solid 1px;
+    border-top: $white solid 1px;
+    border-bottom: $grey-lighter solid 2px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    &:hover{
+      border-left: $grey-lighter solid 1px;
+      border-right: $grey-lighter solid 1px;
+      border-top: $grey-lighter solid 1px;
+      border-bottom: $grey-lighter solid 2px;
+    }
+    @include breakpoint(mobile){
+      padding: 20px;
+    }
+    .card-header{
+      font-size: $page-title;
+      font-weight: 300;
+      border: 0;
+      background: $white;
+      padding-bottom: 0;
+      @include breakpoint(mobile){
+        text-align: center;
+      }
+    }
+    .card-body{
+      padding-top: 0;
+      .value{
+        font-size: $section-title;
+        font-weight: 100;
+        @include breakpoint(mobile){
+          text-align: center;
+        }
+      }
+      .trend{
+        max-width: 30%;
+        .feather{
+
+        }
+      }
+    }
+    &--statics{
+      display: flex;
+      align-items: center;
+      font-size: $page-title;
+      &_arrow{
+        padding:.5em;
+        margin:0 .3px;
+        cursor: pointer;
+        transition: .5s;
+        &:hover{
+          transform: scale(1.2);
+        }
+      }
+      &_up{
+        color:$success;
+        transform-origin: bottom;
+      }
+      &_down{
+        color:$primary;
+        transform-origin: top;
+
+      }
+    }
+  }
+}

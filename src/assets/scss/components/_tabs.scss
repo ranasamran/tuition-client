@@ -1,0 +1,23 @@
+.gka-tabs{
+  background: $white;
+  border-bottom: $grey-lighter solid 1px;
+  &--tab{
+    color:$grey-darkest;
+    font-weight: 300;
+    &.active{
+      color:$black;
+      border-bottom: $primary solid 1px;
+    }
+    &:hover{
+      color:$grey-darkest;
+      border-bottom: $secondary solid 1px;
+    }
+  }
+  &.sticky{
+    top: 58px;
+    z-index: 299; //should be less than sidebar Z layer
+  }
+  &--side-tabs{
+    
+  }
+}

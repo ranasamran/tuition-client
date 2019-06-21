@@ -1,0 +1,32 @@
+.gka-mega{
+  width:83.33%;
+  height: 250px;
+  background: $grey-lighter;
+  border-radius: 0;
+  position: fixed;
+  z-index: 900;
+  top: 55px;
+  left: 16.66%;
+  border: 0;
+  @include breakpoint(mobile){
+    left:0;
+    width:100%;
+    height: calc(100vh - 57px);
+    overflow: auto;
+  }
+  &--navs{
+    display: flex;
+    @include breakpoint(mobile){
+      flex-direction: column;
+    }
+  }
+  &--nav{
+    a{
+      font-size: $nav-item;
+    }
+    h5{
+      font-size: $labels;
+      padding-left: 25px;
+    }
+  }
+}

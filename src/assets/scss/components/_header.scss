@@ -1,0 +1,44 @@
+.gka-header{
+  background: $primary-grad;
+  border-top: $primary solid 2px;
+  border-bottom: $grey solid 1px;
+  &--dropdown{
+    @include breakpoint(mobile) {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  }
+  .quick-link{
+    color: $white;
+    font-size: $nav-item;
+    padding: 20px 0;
+    .feather {
+      margin-right: 4px;
+      color: $white;
+    }
+  }
+  .navbar-brand{
+    color:$white;
+    flex-direction: row;
+    transform: translatex(-20px);
+    .feather {
+      margin-right: 5px;
+      color: $white;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .navbar-nav{
+    margin-left: auto;
+    li{
+      a{
+        color:$white;
+        font-size: $nav-item;
+      }
+    }
+    @include breakpoint(mobile){
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+/*
+This file is been made to give you an example of what kind of files should
+be placed in this componets folder
+*/
+.gka-buttons{
+  display: flex;
+  justify-content: flex-end;
+  .gka-button{
+    margin: .8em .8em 0;
+  }
+}
+.gka-button  {
+  font-size: $plain-text;
+  padding: 1em 2em;
+  text-align: center;
+  text-transform: uppercase;
+  border:transparent solid 1px;
+  border-radius: 2px;
+  transition: all 0.2s;
+  height: fit-content;
+  &:focus {
+    box-shadow: none;
+  }
+  &_primary {
+    background: $primary;
+    color:$white;
+    &:hover{
+      border: 1px solid lighten($primary, 10%);
+      background: darken($primary, 10%);
+      color:$white;
+    }
+  }
+  &_secondary {
+    border: 1px solid lighten($black, 40%);
+    color:lighten($black, 40%);
+    &:hover{
+      filter:brightness(0);
+    }
+  }
+  &--small, &_primary--small, &_secondary--small{
+    padding: .8em 1.6em;
+    font-size: $notes;
+  }
+  &--big, &_primary--big, &_secondary--big{
+    font-size: $nav-item;
+  }
+}

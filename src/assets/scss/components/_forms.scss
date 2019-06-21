@@ -1,0 +1,804 @@
+form {
+  margin-bottom: 2em;
+  padding:1em;
+  // reverse the above for navbars (no help expected in a navbar form)
+  .navbar & {
+    margin-bottom: 0; // only adjust bottom so that pull-xs-right flexed margin-left: auto works
+    .bmd-form-group {
+      display: inline-block;
+      padding-top: 0;
+    }
+    .btn {
+      margin-bottom: 0;
+    }
+  }
+}
+.form-element{
+  //use bootstrap utility class in combination (as per need) example ==> d-block, d-inline-block, d-flex, d-inline-flex or there responsive modifiers.
+  position:relative;
+  @include breakpoint(mobile){
+    margin-bottom: 2em;
+  }
+  &.text-input, .text-input{
+    .input{
+      $space:1em;
+      font-size: $plain-text;
+      border:0;
+      background: no-repeat center left, center calc(100% - 1px);
+      background-size: 0 100%, 100% 100%;
+      box-shadow:none;
+      padding:calc(#{$space} * 1) calc(#{$space} / 2);
+      width:100%;
+      height: calc(#{$space} * 3);
+      transition:all 0.2s ease-out;
+      &:focus{
+        outline: none;
+        background-size:100% 100%, 100% 100%;
+        &::placeholder{
+          opacity: 0;
+        }
+        + label{
+          top:calc(#{$space} *-1);
+          left:0;
+          font-size:.8em;
+        }
+      }
+      &::placeholder{
+        opacity: 0;
+        font-size: 0.8em;
+      }
+    }
+    label{
+      position:absolute;
+      color:#999;
+      font-size:.9em;
+      pointer-events:none;
+      left:.5em;
+      top:.4em;
+      transition:0.2s ease all;
+    }
+    &_default{
+      background-image: linear-gradient(to top, $grey-darkest 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+      &:focus{
+        + label{
+          color:$black;
+        }
+      }
+    }
+    &_success{
+      background-image: linear-gradient(to top, $success 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+      &:focus{
+        + label{
+          color:$success;
+        }
+      }
+    }
+    &_warning{
+      background-image: linear-gradient(to top, $secondary 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+      &:focus{
+        + label{
+          color:$secondary;
+        }
+      }
+    }
+    &_failure{
+      background-image: linear-gradient(to top, #c0392b 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px) !important;
+      &:focus{
+        + label{
+          color:#c0392b;
+        }
+      }
+    }
+  }
+  &.file-input, .file-input{
+    border: 1px solid $grey;
+    color:$black;
+    transition: .3s;
+    padding:.8em;
+    &--label{
+      width: 100%;
+      margin:0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      &_text{
+        @extend .file-input_content;
+        color:rgba($black, .7);
+      }
+    }
+    &_content{
+      padding: .5em;
+      display: inline-flex;
+      width: fit-content;
+      overflow: hidden;
+    }
+    &_btn{
+      @extend .file-input_content;
+      background-color: $grey;
+      position: relative;
+      &:after{
+        content:"";
+        position: absolute;
+        background: $white;
+        width: 5%;
+        height: 100%;
+        top: 0%;
+        left: 0%;
+        transform: rotate(45deg) translate(-1.6em, -0.6em) scale(2);
+        transition: .6s;
+      }
+
+    }
+    &:hover{
+      filter: contrast(75%);
+      .file-input_btn{
+        &:after{
+          transform: rotate(45deg) translate(4.3em, -1.8em) scale(3);
+          filter: blur(5%) contrast(75%);
+        }
+      }
+    }
+
+    input[type="file"]{
+      display: none;
+    }
+  }
+  &.gka-text-input, .gka-text-input{
+    font: $placeholders $font;
+    color: darken($grey-darker, 30%);
+    width: 100%;
+    box-sizing: border-box;
+    border:0;
+    border-bottom: 1px solid $grey;
+    padding: 0.7em 0.7em;
+    $transitions:.2s;
+    &::placeholder{
+      font-size: 1em;
+      opacity: .8;
+      transition: opacity calc(#{$transitions} * 4);
+    }
+    + label{
+      font-size: $labels;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      transition: calc(#{$transitions} * 2);
+      transform: translate(10px, -20px);
+    }
+    &:not(:placeholder-shown){
+      + label{
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-55px);
+      }
+    }
+    ~ .gka-text-input--border {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 1px;
+        transition: calc(#{$transitions} / 2);
+        transition-delay: calc(#{$transitions} / 2);
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        top: auto;
+        bottom: 0;
+        right: auto;
+        left: 0;
+        transition: calc(#{$transitions} /2);
+        transition-delay: calc(#{$transitions} + 0.1s);
+      }
+      i {
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 0;
+          transition: calc(#{$transitions} / 2);
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: 0;
+          left: auto;
+          right: 0;
+          top: auto;
+          bottom: 0;
+          transition: calc(#{$transitions} / 2);
+          transition-delay: calc(#{$transitions} * 1);
+        }
+      }
+    }
+    &:focus{
+      outline:none;
+      + label{
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-65px);
+      }
+      &::placeholder{
+        opacity: 0;
+      }
+      ~ .gka-text-input--border {
+        &:before {
+          width: 100%;
+          transition: calc(#{$transitions} / 2);
+          transition-delay: calc(#{$transitions} + .1s);
+        }
+        &:after {
+          width: 100%;
+          transition: calc(#{$transitions} / 2);
+          transition-delay: calc(#{$transitions} / 2);
+        }
+        i {
+          &:before {
+            height: 100%;
+            transition: calc(#{$transitions} / 2);
+          }
+          &:after {
+            height: 100%;
+            transition: calc(#{$transitions} / 2);
+            transition-delay: calc(#{$transitions} * 1);
+          }
+        }
+      }
+    }
+    &_default{
+      + label{
+        color:$black;
+      }
+      &:not(:placeholder-shown){
+        + label{
+          color:$black;
+        }
+      }
+      &:focus{
+        + label{
+          color:$black;
+        }
+      }
+      ~ .gka-text-input--border{
+        &:before, &:after{
+          background-color: $grey-darkest;
+        }
+        i{
+          &:before, &:after{
+            background-color: $grey-darkest;
+          }
+        }
+      }
+    }
+    &_success{
+      + label{
+        color:$success;
+      }
+      &:not(:placeholder-shown){
+        + label{
+          color:$success;
+        }
+      }
+      &:focus{
+        + label{
+          color:$success;
+        }
+      }
+      ~ .gka-text-input--border{
+        &:before, &:after{
+          background-color: $success;
+        }
+        i{
+          &:before, &:after{
+            background-color: $success;
+          }
+        }
+      }
+    }
+    &_warning{
+      + label{
+        color:$secondary;
+      }
+      &:not(:placeholder-shown){
+        + label{
+          color:$secondary;
+        }
+      }
+      &:focus{
+        + label{
+          color:$secondary;
+        }
+      }
+       ~ .gka-text-input--border{
+         &:before, &:after{
+           background-color: $secondary;
+         }
+         i{
+           &:before, &:after{
+             background-color: $secondary;
+           }
+         }
+       }
+     }
+    &_error{
+      + label{
+        color:$primary;
+      }
+      &:not(:placeholder-shown){
+        + label{
+          color:$primary;
+        }
+      }
+      &:focus{
+        + label{
+          color:$primary;
+        }
+      }
+      ~ .gka-text-input--border{
+        &:before, &:after{
+          background-color: $primary;
+        }
+        i{
+          &:before, &:after{
+            background-color: $primary;
+          }
+        }
+      }
+    }
+  }
+  &.checkbox-group, .checkbox-group{
+    input[type=checkbox]{
+      display: none;
+      & + label {
+        display: block;
+        margin: 0.2em;
+        cursor: pointer;
+        padding: 0.2em;
+        font-size: $plain-text;
+        @extend .boom-effect;
+        &:after{
+          left:.1rem;
+        }
+        &:before {
+          content: "\2714";
+          border: 0.1em solid $black;
+          border-radius: 0.2em;
+          display: inline-block;
+          padding: 0 .3em;
+          margin-right: 1em;
+          vertical-align: bottom;
+          color: transparent;
+          transition: .2s;
+          background:$white;
+        }
+        &:active{
+          &:before {
+            transform: scale(0);
+          }
+        }
+      }
+      &:checked{
+        & + label{
+          transition: all .3s linear;
+          &::before {
+            background-color: $primary;
+            border-color: $primary;
+            color: $white;
+          }
+          &:after{
+            opacity: 0;
+            transform: scale(3);
+          }
+        }
+        &:disabled{
+          & + label{
+            &:before {
+              transform: scale(1);
+              background: lighten($success, 50%);
+              border-color: lighten($success, 50%);
+            }
+          }
+        }
+      }
+      &:disabled{
+        & + label{
+          &:before {
+            transform: scale(1);
+            border-color: $grey-lighter;
+          }
+        }
+      }
+    }
+  }
+  &.radio-group, .radio-group{
+    input[type=radio]{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      font-size: $table-head;
+      display: inline-block;
+      position: relative;
+      background-color: lighten($grey, 15%);
+      color: $primary;
+      top: .5em;
+      height: 2em;
+      width: 2em;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: .7em;
+      outline: none;
+      @extend .boom-effect;
+      &:hover{
+        background-color: lighten($grey, 12%);
+      }
+      &:checked{
+        background-color: lighten($grey, 10%);
+        &::before{
+          position: absolute;
+          font: .8em/1 $font;
+          left: 1em;
+          top: 0.7em;
+          content: '\02143';
+          transform: rotate(40deg);
+        }
+      }
+      & + label{
+        font: 300 $plain-text $font;
+        color: #666;
+        cursor: pointer;
+        vertical-align: middle;
+        margin:0;
+      }
+    }
+  }
+  &.toggle-switch, .toggle-switch{
+    position: relative;
+    display: inline-block;
+    font-size: $page-title;
+    input[type=checkbox] {
+      position: absolute;
+      opacity: 0;
+      &:checked{
+        & + .toggle-switch--slider{
+          background:$success;
+          &:before{
+            transform: translateX(1.3em);
+          }
+          &:after{
+            content: "ON";
+            left:0.5em;
+            top:0.5em;
+            color:$white;
+          }
+        }
+        &:disabled{
+          & + .toggle-switch--slider{
+            background:lighten($success, 50%);
+          }
+          &:before{
+            transform: scale(1);
+          }
+        }
+      }
+      &:disabled{
+        & + .toggle-switch--slider{
+          background:$grey-lightest;
+        }
+        &:before{
+          transform: scale(1);
+        }
+      }
+    }
+    &--slider{
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: .4s;
+      height: 1.2em;
+      width: 2.5em;
+      background: $grey-lighter;
+      font-size: .8em;
+      &:before{
+        content: "";
+        display:inline-block;
+        position: absolute;
+        left: .1em;
+        top:.1em;
+        height: 1em;
+        width: 1em;
+        background: $white;
+        transition: all 300ms;
+      }
+      &:after{
+        content: "OFF";
+        font-size: .5em;
+        display:inline-block;
+        position: absolute;
+        left:2.5em;
+        top:0.5em;
+        height: 1em;
+        width: 1em;
+        background: transparent;
+        transition: all 300ms;
+        color:$black;
+      }
+    }
+    &--slider-rounded{
+      border-radius: 1em;
+      &:before{
+        border-radius: 50%;
+        box-shadow: 0 0.1em 0.3em $grey-darker;
+      }
+    }
+  }
+  &.multi-select-btn, .multi-select-btn{
+    margin:0.2em;
+    width: max-content;
+    display: inline-block;
+    border-radius: .2em;
+    &--label{
+      width: max-content;
+      margin:0;
+      &--text{
+        font-size: $plain-text;
+        text-align: center;
+        display: block;
+        transition: all .3s ease-in-out;
+        padding: 0.2em .7em;
+        width: max-content;
+        border-radius:.2em;
+        border:1px solid darken($grey-lighter,5%);
+        background-color:$grey-lighter;
+        text-transform: capitalize;
+        position: relative;
+        &:hover{
+          background:darken($grey-lighter,5%);
+        }
+      }
+      input[type="checkbox"]{
+        display: none;
+        &:checked{
+          & + .multi-select-btn--label--text{
+            color:$white;
+            &:before{
+              position: absolute;
+              font: 0.5em/1 "Roboto",$font;
+              left: .8em;
+              top: 0;
+              content: '\02143';
+              transform: rotate(40deg);
+              transition: .3s;
+            }
+            &:hover{
+              &::before{
+                transform: rotate(40deg) translate(0.2em, -0.2em);
+              }
+            }
+          }
+        }
+      }
+    }
+    &_primary{
+        input[type="checkbox"]{
+          &:checked{
+            & + .multi-select-btn--label--text{
+              background-color:$primary;
+              border:1px solid darken($primary,5%);
+              &:hover{
+                background:darken($primary,5%);
+
+              }
+            }
+          }
+        }
+    }
+    &_secondary{
+      input[type="checkbox"]{
+        &:checked{
+          & + .multi-select-btn--label--text{
+            background-color:$secondary;
+            border:1px solid darken($secondary,5%);
+            &:hover{
+              background:darken($secondary,5%);
+            }
+          }
+        }
+      }
+    }
+    &_success{
+      input[type="checkbox"]{
+        &:checked{
+          & + .multi-select-btn--label--text{
+            background-color:$success;
+            border:1px solid darken($success,5%);
+            &:hover{
+              background:darken($success,5%);
+            }
+          }
+        }
+      }
+    }
+  }
+  &.dropdown-group, .dropdown-group{
+    .gka-button.dropdown-toggle{
+      height: auto;
+    }
+    .gka-dropdown{
+      overflow: hidden;
+      a{
+        transition: .2s;
+        &:hover{
+          color: $white;
+          -webkit-text-fill-color:  $white;
+        }
+      }
+      &_primary{
+        a{
+          &:hover{
+            background: lighten($primary, 45%);
+          }
+        }
+      }
+      &_secondary{
+        a{
+          &:hover{
+            background: lighten($grey, 15%);
+          }
+        }
+      }
+      &_success{
+        a{
+          &:hover{
+            background: lighten($success, 60%);
+          }
+        }
+      }
+    }
+
+  }
+  &.gk-text-area-wrapper, .gk-text-area-wrapper{
+    background: linear-gradient(to right, $primary, $secondary);
+    padding:1px;
+    transition:.2s;
+      &:focus{
+        padding:1rem;
+      }
+    .gk-text-area{
+      height: auto;
+      border-radius: .1em;
+      min-height: 5rem;
+      padding-left: .2em;
+      transition: all .2s linear, outline-color .7s ease-in-out;
+      background: $white;
+      width: 100%;
+      cursor: text;
+      &:empty:before{
+        content: attr(placeholder);
+        display: block;
+        color: $grey;
+      }
+      &::placeholder{
+        font-size: .8em;
+      }
+      &:focus{
+        min-height: 7em;
+        outline:1px solid $secondary;
+        padding-bottom:2em;
+
+      }
+    }
+  }
+  &.select-group, .select-group{
+    .gka-select1 {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 3em;
+      overflow: hidden;
+      border-bottom: 1px solid $primary;
+      font-size: $nav-head;
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: 0;
+        box-shadow: none;
+        border: none;
+        background: $white;
+        background-image: $primary-grad;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0 0 0 .5em;
+        color: $black;
+        cursor: pointer;
+        &::-ms-expand {
+          display: none;
+        }
+      }
+      option{
+        font-size: $nav-item;
+        &:first-child{
+          font-weight: 100;
+          color: $grey;
+        }
+      }
+      &:after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        font-size: $nav-head;
+        padding: 0 1.5em;
+        display: flex;
+        align-items: center;
+        color:$primary;
+        background: transparent;
+        pointer-events: none;
+        transition: .25s all ease;
+      }
+      &:hover{
+        &:after {
+          color: $secondary;
+        }
+      }
+    }
+    .gka-select{
+      &--toggle{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color:$primary;
+        font-size: $nav-head;
+        text-decoration: none;
+        padding: .5em 1em;
+        &:hover{
+          &:after{
+            border-top: .3em solid darken($secondary, 10%);
+          }
+        }
+      }
+      &--dropdown{
+        border-bottom:1px solid $primary;
+        &--menu{
+          width: 100%;
+          transition: .5s;
+          text-decoration: none;
+          li{
+            display: flex;
+            padding: .5em 1em;
+            font-size: $nav-item;
+            &:not(:last-child){
+              border-bottom: 1px solid $grey-lighter;
+            }
+            &:hover{
+              background: darken($white,5%);
+              a{
+                color:darken($primary, 10%);
+              }
+            }
+            a{
+              color:$primary;
+              text-decoration: none;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

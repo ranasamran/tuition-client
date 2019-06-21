@@ -1,0 +1,28 @@
+.gka-alert{
+  border:0;
+  border-radius: 0;
+  color: $white;
+  font-size: $plain-text;
+  text-align: center;
+  position: fixed;
+  top: 57px;
+  z-index: 200;
+  &.alert-primary{
+    background: $primary-grad;
+  }
+  &.alert-secondary{
+    background: $secondary-grad;
+  }
+  &.alert-danger{
+    background: $danger-grad;
+  }
+  &.alert-success{
+    background: $success-grad;
+  }
+  &.alert-info{
+    background: $info-grad;
+  }
+  &.alert-warning{
+    background: $warning-grad;
+  }
+}

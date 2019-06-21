@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+$font: 'Roboto', sans-serif;
+/*Colors*/
+$primary: #e31937;
+$primary-grad: linear-gradient(to right, #f85032, #c52516);
+$secondary: #ffa016;
+$secondary-grad: linear-gradient(to right, #fdc830, #f37335);
+$grey: #cccccc;
+$grey-darker: #999999;
+$grey-darkest: #666666;
+$grey-lighter: #eeeeee;
+$grey-lightest: #f8f8f8;
+$grey-grad: linear-gradient(to right, #abbaab, #ffffff);
+$white: #ffffff;
+$black: #000000;
+$success: #00B259;
+$success-grad: linear-gradient(to right, #56ab2f, #a8e063);
+$danger-grad: linear-gradient(to right, #ed213a, #93291e);
+$info-grad: linear-gradient(to right, #74ebd5, #acb6e5);
+$warning-grad: linear-gradient(to right, #f09819, #edde5d);
+
+/*Font Sizes*/
+$jumbo: 80px;
+$page-title: 24px;
+$section-title: 18px;
+$table-head: 14px;
+$table-cell: 13px;
+$labels: 14px;
+$placeholders: 13px;
+$buttons: 13px;
+$nav-head: 14px;
+$nav-item: 13px;
+$plain-text: 12px;
+$notes: 11px;
+
+/*Breakpoints*/
+$phone-min: 300px;
+$phone-max: 767px;
+$tablet-min: 768px;
+$tablet-max: 1199px;
+$desktop-min: 1280px;
+$desktop-max: 1440px;
+$hdplus: 1600px;
+$hdfull: 1920px;
+
+/*dimensions*/
+$sidebar-open: 16.66%;
+$sidebar-mobile: 100%;
+
+
