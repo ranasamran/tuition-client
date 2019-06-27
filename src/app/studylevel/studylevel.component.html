@@ -1,0 +1,50 @@
+<!--<p>-->
+  <!--studylevel works-->
+<!--</p>-->
+<!-- Default form login -->
+<form class="text-center border border-light p-5" (ngSubmit)="onSave()" [formGroup]="studyLevelForm" novalidate>
+
+  <h2 class="h4 mb-4">Study Level</h2>
+
+  <!-- Email -->
+  <input type="text" id="level" class="form-control mb-4" placeholder="Study Level" formControlName="title">
+  <input type="text" id="level2" class="form-control mb-4" placeholder="Study Level" formControlName="title2">
+
+  <!-- Password -->
+  <!--<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">-->
+
+  <div class="d-flex justify-content-around">
+
+  </div>
+
+  <!-- Sign in button -->
+  <button color="info" (click)="onSave(studyLevelForm.value)" block="true" class="my-4" type="submit">Save</button>
+
+
+
+
+
+</form>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Country</th>
+    <th scope="col">Area</th>
+    <th scope="col">Population</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let country of countries index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
