@@ -1,0 +1,132 @@
+<!--<p>-->
+<!--studylevel works-->
+<!--</p>-->
+<!-- Default form login -->
+
+<h2 class="h4 mb-4">Courses</h2>
+<form class="text-center border border-light p-5" (ngSubmit)="createCourse()" [formGroup]="courseForm" novalidate>
+
+  <div class="form-element">
+    <div class="form-group">
+      <label for="level">Study Level</label>
+      <select class="form-control" id="level" formControlName="fk_study_level_id">
+        <option>Choose an option</option>
+        <option *ngFor="let level of studyLevels" [value]="level.id">{{level.title}}</option>
+      </select>
+      <span class="gka-text-input--border"><i></i></span>
+      <small
+        [hidden]="courseForm.controls.fk_study_level_id.valid || courseForm.controls.fk_study_level_id.untouched" class="text-danger">
+        Study Level is required
+      </small>
+    </div>
+  </div>
+  <div class="form-element">
+    <div class="form-group">
+      <label for="course">Course Name</label>
+      <input type="text" class="form-control" id="course" placeholder="Course Name" formControlName="title">
+      <span class="gka-text-input--border"><i></i></span>
+      <small
+        [hidden]="courseForm.controls.title.valid || courseForm.controls.title.untouched" class="text-danger">
+        Course Name is required
+      </small>
+    </div>
+  </div>
+  <!--<div class="form-element">-->
+
+      <!--<p>Study Level</p>-->
+      <!--<div class="form-group form-element">-->
+        <!--<div class="select-group">-->
+          <!--<div class="gka-select1">-->
+            <!--<select name="slct" id="slct" formControlName="fk_study_level_id">-->
+              <!--<option>Choose an option</option>-->
+              <!--<option *ngFor="let level of studyLevels" [value]="level.id">{{level.title}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<label for="level">Study Level</label>&ndash;&gt;-->
+    <!--<span class="gka-text-input&#45;&#45;border">-->
+                      <!--<i></i>-->
+                    <!--</span>-->
+
+  <!--<small-->
+    <!--[hidden]="courseForm.controls.title.valid || courseForm.controls.title.untouched" class="text-danger">-->
+    <!--Study Level is required-->
+  <!--</small>-->
+
+  <!--<div class="form-element">-->
+    <!--<input class="gka-text-input gka-text-input_default" type="text" id="level"  placeholder="Study Level"  formControlName="title">-->
+    <!--<label for="level">Course Name</label>-->
+    <!--<span class="gka-text-input&#45;&#45;border">-->
+                      <!--<i></i>-->
+                    <!--</span>-->
+
+  <!--</div>-->
+  <!--<small-->
+    <!--[hidden]="courseForm.controls.title.valid || courseForm.controls.title.untouched" class="text-danger">-->
+    <!--Course Name is required-->
+  <!--</small>-->
+  <div class="d-flex justify-content-around">
+
+  </div>
+
+  <!-- Sign in button -->
+  <!--<a href="#" class="btn gka-button gka-button_secondary">-->
+  <div class="form-element btn-row">
+    <button *ngIf="!courseForm.value.id" class="btn gka-button gka-button_primary" type="submit" [disabled]="courseForm.invalid || isLoading">
+      <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+      <span>Save</span>
+    </button>
+    <button *ngIf="courseForm.value.id" class="btn gka-button gka-button_primary" type="submit" [disabled]="courseForm.invalid || isLoading">
+      <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+      <span>Update</span>
+    </button>
+  </div>
+  <!--</a>-->
+  {{courseForm.value.title}}
+</form>
+
+<!--<nav class="nav gka-tabs flex-column flex-sm-row mt-6 sticky sticky-top">-->
+<!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab active" href="#">Active Tab</a>-->
+<!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+<!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+<!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+<!--</nav>-->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mt-3 pb-2 mb-3 border-bottom">
+  <!--<h1 class="section-title">Default table layout</h1>-->
+  <!--<div class="btn-toolbar mb-2 mb-md-0">-->
+  <!--<div class="btn-group mr-2">-->
+  <!--<button class="btn btn-sm btn-outline-secondary">Share</button>-->
+  <!--<button class="btn btn-sm btn-outline-secondary">Export</button>-->
+  <!--</div>-->
+  <!--<button class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+  <!--<span data-feather="calendar"></span>-->
+  <!--This week-->
+  <!--</button>-->
+  <!--</div>-->
+
+</div>
+<div class="table-responsive has-scroll">
+  <table class="table table-md table-bordered gka-table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Course</th>
+      <th>Study Level</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courses; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{course.title}}</td>
+      <td>{{course.study_level.title}}</td>
+      <td>
+        <button (click)="editCourse(course)">Edit</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

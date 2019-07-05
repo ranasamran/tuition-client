@@ -4,15 +4,15 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {extract} from '@app/core';
 import {Shell} from '@app/shell/shell.service';
-import {CourseclassComponent} from '@app/courseclass/courseclass.component';
+import {UserComponent} from '@app/user/user.component';
 
 const routes: Routes = [
-  Shell.childRoutes([{path: 'classes', component: CourseclassComponent, data: {title: extract('Classes')}}])
+  Shell.childRoutes([{path: 'users', component: UserComponent, data: {title: extract('Users')}}])
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CourseclassRoutingModule {
+export class UserRoutingModule {
 }

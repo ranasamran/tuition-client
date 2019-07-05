@@ -30,10 +30,10 @@ export class CredentialsService {
    * @return True if the user is authenticated.
    */
   login(data: LoginContext): Observable<any> {
-    return this.http.post<any>("http://www.alphazzz.com/api/login", data)
+    return this.http.post<any>('http://www.alphazzz.com/api/login', data);
   }
-  
-  
+
+
   /**
    * Checks is the user is authenticated.
    * @return True if the user is authenticated.

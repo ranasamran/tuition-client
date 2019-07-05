@@ -2,49 +2,80 @@
   <!--studylevel works-->
 <!--</p>-->
 <!-- Default form login -->
-<form class="text-center border border-light p-5" (ngSubmit)="onSave()" [formGroup]="studyLevelForm" novalidate>
 
-  <h2 class="h4 mb-4">Study Level</h2>
+<h2 class="h4 mb-4">Study Level</h2>
+<form class="text-center border border-light p-5" (ngSubmit)="createStudyLevel()" [formGroup]="studyLevelForm" novalidate>
 
-  <!-- Email -->
-  <input type="text" id="level" class="form-control mb-4" placeholder="Study Level" formControlName="title">
-  <input type="text" id="level2" class="form-control mb-4" placeholder="Study Level" formControlName="title2">
+  <div class="form-element">
+    <input class="gka-text-input gka-text-input_default" type="text" id="level"  placeholder="Study Level"  formControlName="title">
+    <label for="level">Study Level</label>
+    <span class="gka-text-input--border">
+                      <i></i>
+                    </span>
 
-  <!-- Password -->
-  <!--<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">-->
-
+  </div>
+  <small
+    [hidden]="studyLevelForm.controls.title.valid || studyLevelForm.controls.title.untouched" class="text-danger">
+    Study Level is required
+  </small>
   <div class="d-flex justify-content-around">
 
   </div>
 
   <!-- Sign in button -->
-  <button color="info" (click)="onSave(studyLevelForm.value)" block="true" class="my-4" type="submit">Save</button>
-
-
-
-
-
+  <!--<a href="#" class="btn gka-button gka-button_secondary">-->
+  <div class="form-element btn-row">
+    <button *ngIf="!studyLevelForm.value.id" class="btn gka-button gka-button_primary" type="submit" [disabled]="studyLevelForm.invalid || isLoading">
+      <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+      <span>Save</span>
+    </button>
+    <button *ngIf="studyLevelForm.value.id" class="btn gka-button gka-button_primary" type="submit" [disabled]="studyLevelForm.invalid || isLoading">
+      <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+      <span>Update</span>
+    </button>
+  </div>
+  <!--</a>-->
+{{studyLevelForm.value.title}}
 </form>
 
+<!--<nav class="nav gka-tabs flex-column flex-sm-row mt-6 sticky sticky-top">-->
+  <!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab active" href="#">Active Tab</a>-->
+  <!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+  <!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+  <!--<a class="flex-fill text-sm-center nav-link gka-tabs&#45;&#45;tab" href="#">Link Tab</a>-->
+<!--</nav>-->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mt-3 pb-2 mb-3 border-bottom">
+  <!--<h1 class="section-title">Default table layout</h1>-->
+  <!--<div class="btn-toolbar mb-2 mb-md-0">-->
+    <!--<div class="btn-group mr-2">-->
+      <!--<button class="btn btn-sm btn-outline-secondary">Share</button>-->
+      <!--<button class="btn btn-sm btn-outline-secondary">Export</button>-->
+    <!--</div>-->
+    <!--<button class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+      <!--<span data-feather="calendar"></span>-->
+      <!--This week-->
+    <!--</button>-->
+  <!--</div>-->
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Country</th>
-    <th scope="col">Area</th>
-    <th scope="col">Population</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let country of countries index as i">
-    <th scope="row">{{ i + 1 }}</th>
-    <td>
-      <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+</div>
+<div class="table-responsive has-scroll">
+  <table class="table table-md table-bordered gka-table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Level</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let level of studyLevels; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{level.title}}</td>
+      <td>
+        <button (click)="editStudyLevel(level)">Edit</button>
+      </td>
+    </tr>
 
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

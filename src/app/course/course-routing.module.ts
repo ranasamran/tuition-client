@@ -4,10 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/core';
 import { Shell } from '@app/shell/shell.service';
-import { NewcourseComponent } from './newcourse.component';
+import { CourseComponent } from './course.component';
 
 const routes: Routes = [
-  Shell.childRoutes([{ path: 'newcourse', component: NewcourseComponent, data: { title: extract('New Course') } }])
+  Shell.childRoutes([{ path: 'courses', component: CourseComponent, data: { title: extract('Courses') } }])
 
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class NewcourseRoutingModule { }
+export class CourseRoutingModule { }

@@ -8,7 +8,7 @@ import { Shell } from '@app/shell/shell.service';
 import { StudylevelComponent } from './studylevel.component';
 
 const routes: Routes = [
-  Shell.childRoutes([{ path: 'studylevel', component: StudylevelComponent, data: { title: extract('Study Level') } }])
+  Shell.childRoutes([{ path: 'studylevels', component: StudylevelComponent, data: { title: extract('Study Level') } }])
 
 ];
 

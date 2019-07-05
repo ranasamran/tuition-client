@@ -3,6 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 
 import { environment } from '@env/environment';
+import { BASE_URL } from '../../common/api-endpoints';
 
 /**
  * Prefixes all requests not starting with `http[s]` with `environment.serverUrl`.
@@ -11,7 +12,7 @@ import { environment } from '@env/environment';
 export class ApiPrefixInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!/^(http|https):/i.test(request.url)) {
-      request = request.clone({ url: environment.serverUrl + request.url });
+      request = request.clone({ url: BASE_URL + request.url });
     }
     return next.handle(request);
   }
